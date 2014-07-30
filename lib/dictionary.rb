@@ -3,20 +3,24 @@ class Term
 @@all_words = []
 
   def initialize(word_input, definition)
-    @definition = definition
+    @definition = [definition]
     @word_input = word_input
   end
 
   def Term.clear
-    @@all_lists = []
+    @@all_words = []
   end
 
-  def Term.words
+  def Term.words_arr
     words_array = []
     @@all_words.each do |word|
       words_array.push(word.word_input)
     end
     words_array
+  end
+
+  def Term.words
+    @@all_words
   end
 
   def save
@@ -31,6 +35,6 @@ class Term
     @definition
   end
   def add_definition(new_definition)
-    @definition = @definition + ': ' +  new_definition
+    @definition << new_definition
   end
 end
