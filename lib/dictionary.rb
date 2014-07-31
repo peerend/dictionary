@@ -34,7 +34,18 @@ class Term
   def definition
     @definition
   end
+
   def add_definition(new_definition)
     @definition << new_definition
   end
+
+  def add_word_input(new_word_input)
+    @word_input << new_word_input
+  end
+
+  def replace_word(new_word)
+    @word_input = new_word
+  end
+
+
 end

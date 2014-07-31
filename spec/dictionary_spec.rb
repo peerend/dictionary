@@ -28,4 +28,21 @@ describe Term do
     word_index = Term.words_arr.index("dog")
     expect(Term.words[word_index].definition).to eq ['four legged animal']
   end
+  it 'lets user edit a word' do
+    dog_word = Term.new('dog', 'four legged animal').save
+    word_index = Term.words_arr.index("dog")
+    new_word = "big dog"
+    expect(Term.words[word_index].word_input.sub(Term.words[word_index].word_input, new_word)).to eq 'big dog'
+  end
+
+  it 'lets user delete an entry in the dictionary' do
+    dog_word = Term.new('dog', 'four legged animal').save
+    word_index = Term.words_arr.index('dog')
+    expect(Term.words.delete_if {|x| x.word_input == 'dog'}).to eq []
+  end
+  it 'lets you add multiple word inputs' do
+    dog_word = Term.new('dog', 'four legged animal')
+    dog_word.add_definition('with hair')
+    expect(dog_word.definition).to eq ['four legged animal', 'with hair']
+  end
 end
